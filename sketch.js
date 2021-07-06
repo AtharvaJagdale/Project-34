@@ -5,9 +5,17 @@ var Engine = Matter.Engine,
  
 var particles = [];
 var plinkos = [];
+var divisions=[]
 
 var divisionHeight=300;
 var score =0;
+var sceneryImg
+
+function preload()
+{
+ sceneryImg=loadImage("images/scenary.jpg")
+}
+
 function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
@@ -52,7 +60,7 @@ function setup() {
 
 
 function draw() {
-  background("black");
+  background(sceneryImg);
   textSize(20)
  //text("Score : "+score,20,30);
   Engine.update(engine);
@@ -64,7 +72,7 @@ function draw() {
      
    }
    if(frameCount%60===0){
-     particles.push(new particle(random(width/2-30, width/2+30), 10,10));
+     particles.push(new Particle(random(width/2-30, width/2+30), 10,10));
      score++;
    }
  
